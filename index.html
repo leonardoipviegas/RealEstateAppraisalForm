@@ -20,31 +20,105 @@
             <option value="Muito Bom">Muito Bom</option>
         </select><br><br>
 
-        <!-- Balcony Feature -->
-        <label for="balconies">Varandas existem?</label>
-        <select id="balconies" name="balconies" required>
+        <!-- Features -->
+        <div id="features">
+            <!-- Balconies -->
+            <div class="feature">
+                <label for="balconies">Varandas existem?</label>
+                <select id="balconies" name="balconies" required>
+                    <option value="No">Não</option>
+                    <option value="Yes">Sim</option>
+                </select><br><br>
+                <div id="balconiesDetails"></div>
+            </div>
+
+            <!-- Arrecadações -->
+            <div class="feature">
+                <label for="arrecadacoes">Arrecadações existem?</label>
+                <select id="arrecadacoes" name="arrecadacoes" required>
+                    <option value="No">Não</option>
+                    <option value="Yes">Sim</option>
+                </select><br><br>
+                <div id="arrecadacoesDetails"></div>
+            </div>
+
+            <!-- Marquises -->
+            <div class="feature">
+                <label for="marquises">Marquises existem?</label>
+                <select id="marquises" name="marquises" required>
+                    <option value="No">Não</option>
+                    <option value="Yes">Sim</option>
+                </select><br><br>
+                <div id="marquisesDetails"></div>
+            </div>
+
+            <!-- Simple Garage -->
+            <div class="feature">
+                <label for="garagemSimples">Garagem Simples existe?</label>
+                <select id="garagemSimples" name="garagemSimples" required>
+                    <option value="No">Não</option>
+                    <option value="Yes">Sim</option>
+                </select><br><br>
+                <div id="garagemSimplesDetails"></div>
+            </div>
+
+            <!-- Double Garage -->
+            <div class="feature">
+                <label for="garagemDupla">Garagem Dupla existe?</label>
+                <select id="garagemDupla" name="garagemDupla" required>
+                    <option value="No">Não</option>
+                    <option value="Yes">Sim</option>
+                </select><br><br>
+                <div id="garagemDuplaDetails"></div>
+            </div>
+
+            <!-- Simple Parking -->
+            <div class="feature">
+                <label for="parqueamentoSimples">Parqueamento Simples existe?</label>
+                <select id="parqueamentoSimples" name="parqueamentoSimples" required>
+                    <option value="No">Não</option>
+                    <option value="Yes">Sim</option>
+                </select><br><br>
+                <div id="parqueamentoSimplesDetails"></div>
+            </div>
+
+            <!-- Double Parking -->
+            <div class="feature">
+                <label for="parqueamentoDuplo">Parqueamento Duplo existe?</label>
+                <select id="parqueamentoDuplo" name="parqueamentoDuplo" required>
+                    <option value="No">Não</option>
+                    <option value="Yes">Sim</option>
+                </select><br><br>
+                <div id="parqueamentoDuploDetails"></div>
+            </div>
+
+            <!-- Yard -->
+            <div class="feature">
+                <label for="quintal">Quintal/Logradouro existe?</label>
+                <select id="quintal" name="quintal" required>
+                    <option value="No">Não</option>
+                    <option value="Yes">Sim</option>
+                </select><br><br>
+                <div id="quintalDetails"></div>
+            </div>
+
+            <!-- Other Features -->
+            <div class="feature">
+                <label for="outros">Outros existem?</label>
+                <select id="outros" name="outros" required>
+                    <option value="No">Não</option>
+                    <option value="Yes">Sim</option>
+                </select><br><br>
+                <div id="outrosDetails"></div>
+            </div>
+        </div>
+
+        <!-- Private Condominium -->
+        <label for="condominioPrivado">Em Condomínio Privado?</label>
+        <select id="condominioPrivado" name="condominioPrivado" required>
             <option value="No">Não</option>
             <option value="Yes">Sim</option>
         </select><br><br>
-        <div id="balconiesDetails"></div>
-
-        <!-- Arrecadações Feature -->
-        <label for="arrecadacoes">Arrecadações existem?</label>
-        <select id="arrecadacoes" name="arrecadacoes" required>
-            <option value="No">Não</option>
-            <option value="Yes">Sim</option>
-        </select><br><br>
-        <div id="arrecadacoesDetails"></div>
-
-        <!-- Marquises Feature -->
-        <label for="marquises">Marquises existem?</label>
-        <select id="marquises" name="marquises" required>
-            <option value="No">Não</option>
-            <option value="Yes">Sim</option>
-        </select><br><br>
-        <div id="marquisesDetails"></div>
-
-        <!-- Add more features as needed -->
 
         <input type="submit" value="Submit">
     </form>
