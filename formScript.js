@@ -1,27 +1,37 @@
 document.addEventListener('DOMContentLoaded', function() {
-    setupDynamicField('varandas', 'Quantas Varandas?', 'Varanda');
-    setupDynamicField('arrecadacoes', 'Quantas Arrecadações?', 'Arrecadação');
-    setupDynamicField('marquises', 'Quantas Marquises?', 'Marquise');
-    setupDynamicField('garagemSimples', 'Quantas Garagens Simples?', 'Garagem Simples');
-    setupDynamicField('garagemDupla', 'Quantas Garagens Duplas?', 'Garagem Dupla');
-    setupDynamicField('parqueamentoSimples', 'Quantos Parqueamentos Simples?', 'Parqueamento Simples');
-    setupDynamicField('parqueamentoDuplo', 'Quantos Parqueamentos Duplos?', 'Parqueamento Duplo');
-    setupDynamicField('quintal', 'Quantos Quintais/Logradouros?', 'Quintal/Logradouro');
-    setupDynamicField('outros', 'Quantos Outros?', 'Outro');
+    // List of all features and their corresponding elements
+    var features = [
+        { id: 'varandas', question: 'Quantas Varandas?', name: 'Varanda' },
+        { id: 'arrecadacoes', question: 'Quantas Arrecadações?', name: 'Arrecadação' },
+        // ... add other features here
+    ];
+
+    // Setup dynamic fields for each feature
+    features.forEach(function(feature) {
+        if (document.getElementById(feature.id)) {
+            setupDynamicField(feature.id, feature.question, feature.name);
+        } else {
+            console.error('Element not found:', feature.id);
+        }
+    });
 });
 
 function setupDynamicField(featureId, questionText, featureName) {
-    document.getElementById(featureId).addEventListener('change', function() {
-        var detailsDiv = document.getElementById(featureId + 'Details');
-        detailsDiv.innerHTML = ''; // Clear previous inputs
-
-        if (this.value === 'Yes') {
-            var count = prompt(questionText);
-            for (let i = 1; i <= count; i++) {
-                detailsDiv.innerHTML += createFeatureInput(featureName, i);
+    var featureElement = document.getElementById(featureId);
+    if (featureElement) {
+        featureElement.addEventListener('change', function() {
+            var detailsDiv = document.getElementById(featureId + 'Details');
+            if (detailsDiv) {
+                detailsDiv.innerHTML = ''; // Clear previous inputs
+                if (this.value === 'Yes') {
+                    var count = prompt(questionText);
+                    for (let i = 1; i <= count; i++) {
+                        detailsDiv.innerHTML += createFeatureInput(featureName, i);
+                    }
+                }
             }
-        }
-    });
+        });
+    }
 }
 
 function createFeatureInput(featureName, number) {
