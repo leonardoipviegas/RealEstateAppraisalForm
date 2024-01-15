@@ -2,7 +2,7 @@
 <html>
 <head>
     <title>Real Estate Appraisal Form</title>
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="style.css"> <!-- Link to your CSS file -->
 </head>
 <body>
     <form id="realEstateForm">
@@ -21,109 +21,99 @@
             <option value="Muito Bom">Muito Bom</option>
         </select><br><br>
 
-        <!-- Features -->
-        <div id="features">
-            <!-- Balconies -->
+        <!-- Dynamic Features Section -->
+        <div id="dynamicFeatures">
+            <!-- Varandas -->
             <div class="feature">
-                <label for="balconies">Varandas existem?</label>
-                <select id="balconies" name="balconies" required>
+                <label for="varandas">Varandas existem?</label>
+                <select id="varandas" name="varandas" onchange="addFeatureDetails('varandas')" required>
                     <option value="No">Não</option>
                     <option value="Yes">Sim</option>
-                </select><br><br>
-                <div id="balconiesDetails"></div>
+                </select>
+                <div id="varandasDetails"></div>
             </div>
 
             <!-- Arrecadações -->
             <div class="feature">
                 <label for="arrecadacoes">Arrecadações existem?</label>
-                <select id="arrecadacoes" name="arrecadacoes" required>
+                <select id="arrecadacoes" name="arrecadacoes" onchange="addFeatureDetails('arrecadacoes')" required>
                     <option value="No">Não</option>
                     <option value="Yes">Sim</option>
-                </select><br><br>
+                </select>
                 <div id="arrecadacoesDetails"></div>
             </div>
 
             <!-- Marquises -->
             <div class="feature">
                 <label for="marquises">Marquises existem?</label>
-                <select id="marquises" name="marquises" required>
+                <select id="marquises" name="marquises" onchange="addFeatureDetails('marquises')" required>
                     <option value="No">Não</option>
                     <option value="Yes">Sim</option>
-                </select><br><br>
+                </select>
                 <div id="marquisesDetails"></div>
             </div>
 
-            <!-- Simple Garage -->
+            <!-- Garagem Simples -->
             <div class="feature">
                 <label for="garagemSimples">Garagem Simples existe?</label>
-                <select id="garagemSimples" name="garagemSimples" required>
+                <select id="garagemSimples" name="garagemSimples" onchange="addFeatureDetails('garagemSimples')" required>
                     <option value="No">Não</option>
                     <option value="Yes">Sim</option>
-                </select><br><br>
+                </select>
                 <div id="garagemSimplesDetails"></div>
             </div>
 
-            <!-- Double Garage -->
+            <!-- Garagem Dupla -->
             <div class="feature">
                 <label for="garagemDupla">Garagem Dupla existe?</label>
-                <select id="garagemDupla" name="garagemDupla" required>
+                <select id="garagemDupla" name="garagemDupla" onchange="addFeatureDetails('garagemDupla')" required>
                     <option value="No">Não</option>
                     <option value="Yes">Sim</option>
-                </select><br><br>
+                </select>
                 <div id="garagemDuplaDetails"></div>
             </div>
 
-            <!-- Simple Parking -->
+            <!-- Parqueamento Simples -->
             <div class="feature">
                 <label for="parqueamentoSimples">Parqueamento Simples existe?</label>
-                <select id="parqueamentoSimples" name="parqueamentoSimples" required>
+                <select id="parqueamentoSimples" name="parqueamentoSimples" onchange="addFeatureDetails('parqueamentoSimples')" required>
                     <option value="No">Não</option>
                     <option value="Yes">Sim</option>
-                </select><br><br>
-                <div id="parqueamentoSimplesDetails"></div>
-            </div>
+                    </select>
+                    <div id="parqueamentoSimplesDetails"></div>
+                    </div>
 
-            <!-- Double Parking -->
+            <!-- Parqueamento Duplo -->
             <div class="feature">
                 <label for="parqueamentoDuplo">Parqueamento Duplo existe?</label>
-                <select id="parqueamentoDuplo" name="parqueamentoDuplo" required>
+                <select id="parqueamentoDuplo" name="parqueamentoDuplo" onchange="addFeatureDetails('parqueamentoDuplo')" required>
                     <option value="No">Não</option>
                     <option value="Yes">Sim</option>
-                </select><br><br>
+                </select>
                 <div id="parqueamentoDuploDetails"></div>
             </div>
 
-            <!-- Yard -->
+            <!-- Quintal/Logradouro -->
             <div class="feature">
                 <label for="quintal">Quintal/Logradouro existe?</label>
-                <select id="quintal" name="quintal" required>
+                <select id="quintal" name="quintal" onchange="addFeatureDetails('quintal')" required>
                     <option value="No">Não</option>
                     <option value="Yes">Sim</option>
-                </select><br><br>
+                </select>
                 <div id="quintalDetails"></div>
-            </div>
+            </div>                
 
-            <!-- Other Features -->
-            <div class="feature">
-                <label for="outros">Outros existem?</label>
-                <select id="outros" name="outros" required>
-                    <option value="No">Não</option>
-                    <option value="Yes">Sim</option>
-                </select><br><br>
-                <div id="outrosDetails"></div>
-            </div>
-        </div>
+        <!-- Observations Textbox -->
+        <!-- Observations Textbox -->
+        <label for="observations">Observações:</label>
+        <textarea id="observations" name="observations" rows="4" placeholder="Mais algo relevante e que seja comparável com outros imóveis no mercado?"></textarea><br><br>
 
-        <!-- Private Condominium -->
-        <label for="condominioPrivado">Em Condomínio Privado?</label>
-        <select id="condominioPrivado" name="condominioPrivado" required>
-            <option value="No">Não</option>
-            <option value="Yes">Sim</option>
-        </select><br><br>
 
-        <input type="submit" value="Submit">
+        <!-- Submit Button -->
+        <input type="submit" value="Submeter">
     </form>
 
-    <script src="formScript.js"></script>
+    <script src="formScript.js"></script> <!-- Link to your JavaScript file -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
 </body>
 </html>
