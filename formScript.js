@@ -90,6 +90,7 @@ document.getElementById('realEstateForm').addEventListener('submit', function(ev
     yPos = addListItem('Endereço da Casa: ' + document.getElementById('address').value, yPos);
     yPos = addListItem('Data da Visita: ' + document.getElementById('visitDate').value, yPos);
     yPos = addListItem('Qualidade das Vistas: ' + document.getElementById('viewQuality').value, yPos);
+    yPos = addListItem('Qualidade dos Acabamentos/Equipamentos: ' + document.getElementById('furQuality').value, yPos);
 
     // Add each feature with the appropriate Portuguese question
     const features = [
