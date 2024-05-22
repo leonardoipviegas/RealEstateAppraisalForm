@@ -26,13 +26,11 @@ function setupDynamicField(featureId, questionText) {
 }
 
 function addFeatureDetails(featureId) {
-    // Get the current count from the input box
     var countElement = document.getElementById(featureId + 'Count');
     if (countElement) {
         var count = countElement.value;
         var detailsDiv = document.getElementById(featureId + 'Details');
 
-        // Create a container for the new size inputs if it doesn't exist
         var sizesContainerId = featureId + 'SizesContainer';
         var sizesContainer = document.getElementById(sizesContainerId);
         if (!sizesContainer) {
@@ -41,10 +39,8 @@ function addFeatureDetails(featureId) {
             detailsDiv.appendChild(sizesContainer);
         }
 
-        // Clear only the sizes container
         sizesContainer.innerHTML = '';
 
-        // Append size inputs to the sizes container
         for (let i = 1; i <= count; i++) {
             sizesContainer.innerHTML += createFeatureInput(featureId, i);
         }
@@ -70,32 +66,29 @@ function createFeatureInput(featureId, number) {
 }
 
 document.getElementById('realEstateForm').addEventListener('submit', function(event) {
-    event.preventDefault(); // Prevent the form from submitting in the traditional way
+    event.preventDefault();
 
     const { jsPDF } = window.jspdf;
     const doc = new jsPDF();
 
-    // Function to add text with indentation
     function addListItem(text, yPos, indentLevel = 0) {
-        const indentSize = 5; // Define the indent size
+        const indentSize = 5;
         const xPosition = 10 + (indentLevel * indentSize);
         doc.text(text, xPosition, yPos);
-        return yPos + 7; // Increase Y position for next element, less spacing for list-like structure
+        return yPos + 7;
     }
 
-    // Starting Y position
     let yPos = 10;
 
-    // Add the form data to the PDF with correct Portuguese
     yPos = addListItem('Endereço da Casa: ' + document.getElementById('address').value, yPos);
     yPos = addListItem('Data da Visita: ' + document.getElementById('visitDate').value, yPos);
     yPos = addListItem('Qualidade das Vistas: ' + document.getElementById('viewQuality').value, yPos);
     yPos = addListItem('Qualidade dos Acabamentos/Equipamentos: ' + document.getElementById('furQuality').value, yPos);
 
-    // Add each feature with the appropriate Portuguese question
     const features = [
         { id: 'varandas', question: 'Existem varandas?' },
         { id: 'arrecadacoes', question: 'Existem arrecadações?' },
+        { id: 'marquises', question: 'Existem marquises?' },
         { id: 'garagemSimples', question: 'Existe garagem simples?' },
         { id: 'garagemDupla', question: 'Existe garagem dupla?' },
         { id: 'parqueamentoSimples', question: 'Existe parqueamento simples?' },
@@ -122,22 +115,59 @@ document.getElementById('realEstateForm').addEventListener('submit', function(ev
                 }
             }
         }
-        // Add a small gap after each feature section
         yPos += 5;
     });
 
-    // Add observations
+    let additionalFields = [
+        { id: 'numWCs', label: 'N.º WCs' },
+        { id: 'caves', label: 'Caves' },
+        { id: 'pisosAcimaSolo', label: 'Pisos Acima do Solo' },
+        { id: 'sotao', label: 'Sotão' },
+        { id: 'elevadores', label: 'Elevadores' },
+        { id: 'estrutura', label: 'Estrutura' },
+        { id: 'cobertura', label: 'Cobertura' },
+        { id: 'paredes', label: 'Paredes' },
+        { id: 'caixilharias', label: 'Caixilharias' },
+        { id: 'fachadas', label: 'Fachadas' },
+        { id: 'paredesZonasSecas', label: 'Paredes - ZONAS SECAS' },
+        { id: 'paredesZonasHumidas', label: 'Paredes - ZONAS HÚMIDAS' },
+        { id: 'pavimentosZonasSecas', label: 'Pavimentos - ZONAS SECAS' },
+        { id: 'pavimentosZonasHumidas', label: 'Pavimentos - ZONAS HÚMIDAS' },
+        { id: 'climatizacao', label: 'Climatização' },
+        { id: 'classeEnergetica', label: 'Classe Energética' },
+        { id: 'captacaoSolar', label: 'Captação Solar' },
+        { id: 'nivelAcabamentos', label: 'Nível de Acabamentos' },
+        { id: 'estadoConservacao', label: 'Estado de Conservação' },
+        { id: 'habitavel', label: 'Habitável' },
+        { id: 'disposicaoEspacoInterior', label: 'Disposição do Espaço Interior' },
+        { id: 'instalacaoGasNatural', label: 'Instalação de Gás Natural' },
+        { id: 'facilidadeEstacionamento', label: 'Facilidade de Estacionamento' },
+        { id: 'zona', label: 'Zona' },
+        { id: 'tendenciaDesenvUrbanistico', label: 'Tendência De Desenv. Urbanístico' },
+        { id: 'facilidadeAcesso', label: 'Facilidade De Acesso' },
+        { id: 'transportesPublicos', label: 'Transportes Públicos' },
+        { id: 'valorComercialLocalizacao', label: 'Valor Comercial Da Localização' },
+        { id: 'servicosProximidade', label: 'Serviços Na Proximidade' },
+        { id: 'zonasVerdes', label: 'Zonas Verdes' },
+        { id: 'enquadramentoPaisagistico', label: 'Enquadramento Paisagístico' },
+        { id: 'facilComercializacao', label: 'Facil. Comercialização' }
+    ];
+
+    additionalFields.forEach(({ id, label }) => {
+        let elementValue = document.getElementById(id).value;
+        yPos = addListItem(label + ': ' + elementValue, yPos);
+    });
+
     let observations = document.getElementById('observations').value;
     if (observations) {
         yPos = addListItem('Observações:', yPos);
         yPos = addListItem(observations, yPos, 1);
     }
 
-    // Save the PDF with the dynamically generated filename
     const addressInput = document.getElementById('address').value;
     const visitDateInput = document.getElementById('visitDate').value;
     const dateObj = new Date(visitDateInput);
-    const formattedDate = dateObj.toISOString().split('T')[0].slice(2); // Gets the date in YY-MM-DD format
+    const formattedDate = dateObj.toISOString().split('T')[0].slice(2);
     const sanitizedAddress = addressInput.replace(/[^\w\s]/gi, '_');
     const filename = `${formattedDate} ${sanitizedAddress}.pdf`;
 
