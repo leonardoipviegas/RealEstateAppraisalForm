@@ -5,9 +5,9 @@ body {
     padding: 0;
     display: flex;
     justify-content: center;
-    align-items: flex-start; /* Change this to start at the top of the page */
-    min-height: 100vh; /* Use min-height instead of height to allow for scrolling */
-    padding-top: 20px; /* Add some space at the top */
+    align-items: flex-start;
+    min-height: 100vh;
+    padding-top: 20px;
 }
 
 form {
@@ -15,9 +15,9 @@ form {
     padding: 20px;
     border-radius: 8px;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-    width: 100%; /* Make form take full width */
-    max-width: 500px; /* Max width to ensure it doesn't get too wide on large screens */
-    box-sizing: border-box; /* Make sure padding doesn't add to the width */
+    width: 100%;
+    max-width: 500px;
+    box-sizing: border-box;
 }
 
 label {
@@ -47,6 +47,7 @@ input[type="submit"] {
     border-radius: 4px;
     cursor: pointer;
     transition: background-color 0.3s;
+    width: 100%;
 }
 
 input[type="submit"]:hover {
@@ -56,42 +57,42 @@ input[type="submit"]:hover {
 .feature {
     margin-bottom: 20px;
     padding-bottom: 20px;
-    border-bottom: 1px solid #eaeaea; /* Light grey border */
+    border-bottom: 1px solid #eaeaea;
 }
 
 .feature:last-child {
-    border-bottom: none; /* Last feature should not have a border */
+    border-bottom: none;
 }
 
 .feature > div {
-    margin-left: 20px;
+    margin-left: 0;
     margin-top: 10px;
 }
 
 textarea::placeholder {
-    color: #aaa; /* Grey placeholder text */
+    color: #aaa;
 }
 
 .dynamic-container {
-    overflow: auto; /* Adjust as needed */
-    max-height: 500px; /* Or whatever maximum height you want */
+    overflow: auto;
+    max-height: 500px;
 }
 
 @media (max-width: 600px) {
     body {
-        padding: 10px; /* Slightly less padding on smaller screens */
+        padding: 10px;
     }
 
     form {
-        margin: 10px; /* Give the form some margin on smaller screens */
-        padding: 15px; /* Slightly less padding on smaller screens */
+        margin: 10px;
+        padding: 15px;
     }
 
     input[type="submit"] {
-        width: 100%; /* Full-width button for easier tapping on mobile */
+        width: 100%;
     }
 
     .feature > div {
-        margin-left: 0; /* Ensure no left margin on mobile for feature details */
+        margin-left: 0;
     }
 }
