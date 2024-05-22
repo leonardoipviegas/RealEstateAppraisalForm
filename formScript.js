@@ -71,19 +71,24 @@ document.getElementById('realEstateForm').addEventListener('submit', function(ev
     const { jsPDF } = window.jspdf;
     const doc = new jsPDF();
 
-    function addListItem(text, yPos, indentLevel = 0) {
+    function addListItem(text, yPos, indentLevel = 0, bold = false) {
         const indentSize = 5;
         const xPosition = 10 + (indentLevel * indentSize);
+        doc.setFont("helvetica", bold ? "bold" : "normal");
         doc.text(text, xPosition, yPos);
         return yPos + 7;
     }
 
     let yPos = 10;
+    const sectionSpacing = 10;
 
-    yPos = addListItem('Endereço da Casa: ' + document.getElementById('address').value, yPos);
+    yPos = addListItem('Endereço da Casa: ' + document.getElementById('address').value, yPos, 0, true);
     yPos = addListItem('Data da Visita: ' + document.getElementById('visitDate').value, yPos);
-    yPos = addListItem('Qualidade das Vistas: ' + document.getElementById('viewQuality').value, yPos);
+    yPos += sectionSpacing;
+    
+    yPos = addListItem('Qualidade das Vistas: ' + document.getElementById('viewQuality').value, yPos, 0, true);
     yPos = addListItem('Qualidade dos Acabamentos/Equipamentos: ' + document.getElementById('furQuality').value, yPos);
+    yPos += sectionSpacing;
 
     const features = [
         { id: 'varandas', question: 'Existem varandas?' },
@@ -98,7 +103,7 @@ document.getElementById('realEstateForm').addEventListener('submit', function(ev
 
     features.forEach(({ id, question }) => {
         let featureValue = document.getElementById(id).value === 'Yes' ? 'Sim' : 'Não';
-        yPos = addListItem(question + ' ' + featureValue, yPos);
+        yPos = addListItem(question + ' ' + featureValue, yPos, 0, true);
 
         if (featureValue === 'Sim') {
             let countElement = document.getElementById(id + 'Count');
@@ -115,7 +120,7 @@ document.getElementById('realEstateForm').addEventListener('submit', function(ev
                 }
             }
         }
-        yPos += 5;
+        yPos += sectionSpacing;
     });
 
     let additionalFields = [
@@ -155,12 +160,13 @@ document.getElementById('realEstateForm').addEventListener('submit', function(ev
 
     additionalFields.forEach(({ id, label }) => {
         let elementValue = document.getElementById(id).value;
-        yPos = addListItem(label + ': ' + elementValue, yPos);
+        yPos = addListItem(label + ': ' + elementValue, yPos, 0, true);
+        yPos += 3;
     });
 
     let observations = document.getElementById('observations').value;
     if (observations) {
-        yPos = addListItem('Observações:', yPos);
+        yPos = addListItem('Observações:', yPos, 0, true);
         yPos = addListItem(observations, yPos, 1);
     }
 
