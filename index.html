@@ -112,11 +112,368 @@
                 <div id="quintalDetails"></div>
             </div>                
 
-        <!-- Observations Textbox -->
+        <!-- New Dropdowns -->
+        <label for="numWCs">N.º WCs:</label>
+        <select id="numWCs" name="numWCs" required>
+            <option value="1">1</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
+            <option value="4">4</option>
+            <option value="5">5</option>
+            <option value="6">6</option>
+        </select><br><br>
+
+        <label for="caves">Caves:</label>
+        <select id="caves" name="caves" required>
+            <option value="1">1</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
+            <option value="4">4</option>
+            <option value="5">5</option>
+            <option value="6">6</option>
+        </select><br><br>
+
+        <label for="pisosAcimaSolo">Pisos Acima do Solo:</label>
+        <select id="pisosAcimaSolo" name="pisosAcimaSolo" required>
+            <option value="1">1</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
+            <option value="4">4</option>
+            <option value="5">5</option>
+            <option value="6">6</option>
+            <option value="7">7</option>
+            <option value="8">8</option>
+            <option value="9">9</option>
+            <option value="10">10</option>
+            <option value="11">11</option>
+            <option value="12">12</option>
+            <option value="13">13</option>
+            <option value="14">14</option>
+            <option value="15">15</option>
+            <option value="16">16</option>
+            <option value="17">17</option>
+            <option value="18">18</option>
+            <option value="19">19</option>
+            <option value="20">20</option>
+            <option value="21">21</option>
+            <option value="22">22</option>
+            <option value="23">23</option>
+            <option value="24">24</option>
+            <option value="25">25</option>
+            <option value="26">26</option>
+            <option value="27">27</option>
+            <option value="28">28</option>
+            <option value="29">29</option>
+            <option value="30">30</option>
+        </select><br><br>
+
+        <label for="sotao">Sotão:</label>
+        <select id="sotao" name="sotao" required>
+            <option value="Sim">Sim</option>
+            <option value="Não">Não</option>
+        </select><br><br>
+
+        <label for="elevadores">Elevadores:</label>
+        <select id="elevadores" name="elevadores" required>
+            <option value="1">1</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
+            <option value="4">4</option>
+            <option value="5">5</option>
+            <option value="6">6</option>
+        </select><br><br>
+
+        <label for="estrutura">Estrutura:</label>
+        <select id="estrutura" name="estrutura" required>
+            <option value="BETÃO ARMADO - LAJE MACIÇA">BETÃO ARMADO - LAJE MACIÇA</option>
+            <option value="BETÃO ARMADO - LAJE ALIGEIRADA">BETÃO ARMADO - LAJE ALIGEIRADA</option>
+            <option value="BETÃO ARMADO - LAJE FUNGIFORME">BETÃO ARMADO - LAJE FUNGIFORME</option>
+            <option value="BETÃO ARMADO / LAJES MISTAS - AÇO-BETÃO">BETÃO ARMADO / LAJES MISTAS - AÇO-BETÃO</option>
+            <option value="ESTRUTURA METÁLICA">ESTRUTURA METÁLICA</option>
+            <option value="ESTRUTURA MISTA (PARTE METÁLICA E PARTE BETÃO)">ESTRUTURA MISTA (PARTE METÁLICA E PARTE BETÃO)</option>
+            <option value="PAREDES RESISTENTES EM ALVENARIA - PAVIMENTO BETÃO">PAREDES RESISTENTES EM ALVENARIA - PAVIMENTO BETÃO</option>
+            <option value="PAREDES RESISTENTES EM ALVENARIA - PAVIMENTO EM MADEIRA">PAREDES RESISTENTES EM ALVENARIA - PAVIMENTO EM MADEIRA</option>
+            <option value="PRÉ-FABRICADA EM MADEIRA">PRÉ-FABRICADA EM MADEIRA</option>
+        </select><br><br>
+
+        <label for="cobertura">Cobertura:</label>
+        <select id="cobertura" name="cobertura" required>
+            <option value="TELHA">TELHA</option>
+            <option value="LAJE">LAJE</option>
+            <option value="FIBROCIMENTO">FIBROCIMENTO</option>
+            <option value="METÁLICA">METÁLICA</option>
+            <option value="AUTOPORTANTE">AUTOPORTANTE</option>
+            <option value="TELHA / LAJE">TELHA / LAJE</option>
+            <option value="TELHA / FIBROCIMENTO">TELHA / FIBROCIMENTO</option>
+            <option value="TELHA / METÁLICA">TELHA / METÁLICA</option>
+            <option value="METÁLICA / LAJE">METÁLICA / LAJE</option>
+            <option value="OUTRAS">OUTRAS</option>
+        </select><br><br>
+
+        <label for="paredes">Paredes:</label>
+        <select id="paredes" name="paredes" required>
+            <option value="ALVENARIA DE TIJOLO">ALVENARIA DE TIJOLO</option>
+            <option value="ALVENARIA DE PEDRA">ALVENARIA DE PEDRA</option>
+            <option value="ALVENARIA DE BLOCOS EM BETÃO">ALVENARIA DE BLOCOS EM BETÃO</option>
+            <option value="PAINÉIS PRÉ-FABRICADOS EM BETÃO">PAINÉIS PRÉ-FABRICADOS EM BETÃO</option>
+            <option value="ALVENARIA DE TIJOLO MACIÇO">ALVENARIA DE TIJOLO MACIÇO</option>
+            <option value="PAINÉIS METÁLICOS">PAINÉIS METÁLICOS</option>
+            <option value="PAINÉIS 'SANDWICH'">PAINÉIS "SANDWICH"</option>
+            <option value="CHAPA DE VIDRO">CHAPA DE VIDRO</option>
+            <option value="BETÃO CELULAR AUTOCLAVADO">BETÃO CELULAR AUTOCLAVADO</option>
+            <option value="ALVENARIA / PLADUR">ALVENARIA / PLADUR</option>
+            <option value="ALVENARIA / PAINÉIS 'SANDWICH'">ALVENARIA / PAINÉIS "SANDWICH"</option>
+            <option value="ALVENARIA / CHAPA">ALVENARIA / CHAPA</option>
+            <option value="MADEIRA">MADEIRA</option>
+            <option value="OUTRAS">OUTRAS</option>
+        </select><br><br>
+
+        <label for="caixilharias">Caixilharias:</label>
+        <select id="caixilharias" name="caixilharias" required>
+            <option value="ALUMÍNIO TERMO LACADO VIDRO DUPLO">ALUMÍNIO TERMO LACADO VIDRO DUPLO</option>
+            <option value="ALUMÍNIO TERMO LACADO VIDRO SIMPLES">ALUMÍNIO TERMO LACADO VIDRO SIMPLES</option>
+            <option value="ALUMÍNIO ANODIZADO VIDRO DUPLO">ALUMÍNIO ANODIZADO VIDRO DUPLO</option>
+            <option value="ALUMÍNIO ANODIZADO VIDRO SIMPLES">ALUMÍNIO ANODIZADO VIDRO SIMPLES</option>
+            <option value="EM MADEIRA">EM MADEIRA</option>
+            <option value="EM PVC">EM PVC</option>
+            <option value="METÁLICA">METÁLICA</option>
+        </select><br><br>
+
+        <label for="fachadas">Fachadas:</label>
+        <select id="fachadas" name="fachadas" required>
+            <option value="PINTADA">PINTADA</option>
+            <option value="LADRILHO CERÂMICO">LADRILHO CERÂMICO</option>
+            <option value="LADRILHO PEDRA NATURAL">LADRILHO PEDRA NATURAL</option>
+            <option value="FACE À VISTA">FACE À VISTA</option>
+            <option value="MONO MASSA">MONO MASSA</option>
+            <option value="VIDRO">VIDRO</option>
+            <option value="PINTADA / LADRILHO">PINTADA / LADRILHO</option>
+            <option value="PINTADA / FACE À VISTA">PINTADA / FACE À VISTA</option>
+            <option value="PINTADA / VIDRO">PINTADA / VIDRO</option>
+            <option value="FACE À VISTA / VIDRO">FACE À VISTA / VIDRO</option>
+            <option value="OUTRA">OUTRA</option>
+        </select><br><br>
+
+        <label for="paredesZonasSecas">Paredes - ZONAS SECAS:</label>
+        <select id="paredesZonasSecas" name="paredesZonasSecas" required>
+            <option value="PINTADAS">PINTADAS</option>
+            <option value="PAPEL">PAPEL</option>
+            <option value="MADEIRA">MADEIRA</option>
+            <option value="PINTADAS / REVESTIMENTO CERÂMICO">PINTADAS / REVESTIMENTO CERÂMICO</option>
+            <option value="PINTADAS / REVESTIMENTO EM PEDRA">PINTADAS / REVESTIMENTO EM PEDRA</option>
+            <option value="PINTADAS / PAPEL">PINTADAS / PAPEL</option>
+            <option value="OUTROS">OUTROS</option>
+        </select><br><br>
+
+        <label for="paredesZonasHumidas">Paredes - ZONAS HÚMIDAS:</label>
+        <select id="paredesZonasHumidas" name="paredesZonasHumidas" required>
+            <option value="REVESTIMENTO CERÂMICO">REVESTIMENTO CERÂMICO</option>
+            <option value="REVESTIMENTO EM PEDRA">REVESTIMENTO EM PEDRA</option>
+            <option value="PINTADAS">PINTADAS</option>
+            <option value="PINTADAS / REVESTIMENTO CERÂMICO">PINTADAS / REVESTIMENTO CERÂMICO</option>
+            <option value="PINTADAS / REVESTIMENTO EM PEDRA">PINTADAS / REVESTIMENTO EM PEDRA</option>
+            <option value="OUTROS">OUTROS</option>
+        </select><br><br>
+
+        <label for="pavimentosZonasSecas">Pavimentos - ZONAS SECAS:</label>
+        <select id="pavimentosZonasSecas" name="pavimentosZonasSecas" required>
+            <option value="MOSAICO CERÂMICO E PAVIMENTO FLUTUANTE">MOSAICO CERÂMICO E PAVIMENTO FLUTUANTE</option>
+            <option value="PAVIMENTO FLUTUANTE (REVESTIMENTO SINTÉTICO)">PAVIMENTO FLUTUANTE (REVESTIMENTO SINTÉTICO)</option>
+            <option value="PAVIMENTO FLUTUANTE (REVESTIMENTO MADEIRA)">PAVIMENTO FLUTUANTE (REVESTIMENTO MADEIRA)</option>
+            <option value="MOSAICO CERÂMICO">MOSAICO CERÂMICO</option>
+            <option value="PARQUET / TACO EM MADEIRA">PARQUET / TACO EM MADEIRA</option>
+            <option value="SOALHO">SOALHO</option>
+            <option value="PEDRA NATURAL">PEDRA NATURAL</option>
+            <option value="MÁRMORE">MÁRMORE</option>
+            <option value="GRANITO">GRANITO</option>
+            <option value="MARMORITE">MARMORITE</option>
+            <option value="VINÍLICO">VINÍLICO</option>
+            <option value="EM CORTICITE">EM CORTICITE</option>
+            <option value="BETONILHA">BETONILHA</option>
+            <option value="OUTRO">OUTRO</option>
+        </select><br><br>
+
+        <label for="pavimentosZonasHumidas">Pavimentos - ZONAS HÚMIDAS:</label>
+        <select id="pavimentosZonasHumidas" name="pavimentosZonasHumidas" required>
+            <option value="MOSAICO CERÂMICO">MOSAICO CERÂMICO</option>
+            <option value="MOSAICO HIDRÁULICO">MOSAICO HIDRÁULICO</option>
+            <option value="PEDRA NATURAL">PEDRA NATURAL</option>
+            <option value="MÁRMORE">MÁRMORE</option>
+            <option value="GRANITO">GRANITO</option>
+            <option value="MARMORITE">MARMORITE</option>
+            <option value="VINÍLICO">VINÍLICO</option>
+            <option value="BETONILHA">BETONILHA</option>
+            <option value="OUTRO">OUTRO</option>
+        </select><br><br>
+
+        <label for="climatizacao">Climatização:</label>
+        <select id="climatizacao" name="climatizacao" required>
+            <option value="AQUECIMENTO CENTRAL">AQUECIMENTO CENTRAL</option>
+            <option value="AR CONDICIONADO">AR CONDICIONADO</option>
+            <option value="AQUECIMENTO CENTRAL E AR ACONDICIONADO">AQUECIMENTO CENTRAL E AR ACONDICIONADO</option>
+            <option value="AQUECIMENTO E PRÉ-INSTALAÇÃO DE AR-CONDICIONADO">AQUECIMENTO E PRÉ-INSTALAÇÃO DE AR-CONDICIONADO</option>
+            <option value="AR CONDICIONADO E PRÉ-INSTALAÇÃO DE AQUECIMENTO">AR CONDICIONADO E PRÉ-INSTALAÇÃO DE AQUECIMENTO</option>
+            <option value="PAVIMENTO RADIANTE">PAVIMENTO RADIANTE</option>
+        </select><br><br>
+
+        <label for="classeEnergetica">Classe Energética:</label>
+        <select id="classeEnergetica" name="classeEnergetica" required>
+            <option value="A+">A+</option>
+            <option value="A">A</option>
+            <option value="B">B</option>
+            <option value="B-">B-</option>
+            <option value="C">C</option>
+            <option value="D">D</option>
+            <option value="E">E</option>
+            <option value="F">F</option>
+            <option value="G">G</option>
+            <option value="S/ Certificado">S/ Certificado</option>
+        </select><br><br>
+
+        <label for="captacaoSolar">Captação Solar:</label>
+        <select id="captacaoSolar" name="captacaoSolar" required>
+            <option value="SIM">SIM</option>
+            <option value="NÃO">NÃO</option>
+        </select><br><br>
+
+        <label for="nivelAcabamentos">Nível de Acabamentos:</label>
+        <select id="nivelAcabamentos" name="nivelAcabamentos" required>
+            <option value="LUXO">LUXO</option>
+            <option value="MUITO BONS">MUITO BONS</option>
+            <option value="BONS">BONS</option>
+            <option value="CORRENTES">CORRENTES</option>
+            <option value="MODESTOS">MODESTOS</option>
+            <option value="MAUS">MAUS</option>
+        </select><br><br>
+
+        <label for="estadoConservacao">Estado de Conservação:</label>
+        <select id="estadoConservacao" name="estadoConservacao" required>
+            <option value="NOVO">NOVO</option>
+            <option value="MUITO BOM">MUITO BOM</option>
+            <option value="BOM">BOM</option>
+            <option value="REGULAR">REGULAR</option>
+            <option value="DEFICIENTE">DEFICIENTE</option>
+            <option value="MAU">MAU</option>
+        </select><br><br>
+
+        <label for="habitavel">Habitável:</label>
+        <select id="habitavel" name="habitavel" required>
+            <option value="SIM">SIM</option>
+            <option value="NÃO">NÃO</option>
+        </select><br><br>
+
+        <label for="disposicaoEspacoInterior">Disposição do Espaço Interior:</label>
+        <select id="disposicaoEspacoInterior" name="disposicaoEspacoInterior" required>
+            <option value="MUITO BOA">MUITO BOA</option>
+            <option value="BOA">BOA</option>
+            <option value="RAZOÁVEL">RAZOÁVEL</option>
+            <option value="MEDIOCRE">MEDIOCRE</option>
+            <option value="MÁ">MÁ</option>
+        </select><br><br>
+
+        <label for="instalacaoGasNatural">Instalação de Gás Natural:</label>
+        <select id="instalacaoGasNatural" name="instalacaoGasNatural" required>
+            <option value="SIM">SIM</option>
+            <option value="NÃO">NÃO</option>
+        </select><br><br>
+
+        <label for="facilidadeEstacionamento">Facilidade de Estacionamento:</label>
+        <select id="facilidadeEstacionamento" name="facilidadeEstacionamento" required>
+            <option value="MUITO BOA">MUITO BOA</option>
+            <option value="BOA">BOA</option>
+            <option value="RAZOÁVEL">RAZOÁVEL</option>
+            <option value="MEDIOCRE">MEDIOCRE</option>
+            <option value="MÁ">MÁ</option>
+        </select><br><br>
+
+        <label for="zona">Zona:</label>
+        <select id="zona" name="zona" required>
+            <option value="RESIDENCIAL DE PRIMEIRA HABITAÇÃO">RESIDENCIAL DE PRIMEIRA HABITAÇÃO</option>
+            <option value="RESIDENCIAL DE SEGUNDA HABITAÇÃO">RESIDENCIAL DE SEGUNDA HABITAÇÃO</option>
+            <option value="RURAL">RURAL</option>
+            <option value="SERVIÇOS">SERVIÇOS</option>
+            <option value="INDUSTRIAL">INDUSTRIAL</option>
+            <option value="COMERCIAL">COMERCIAL</option>
+            <option value="BALNEAR">BALNEAR</option>
+            <option value="TURÍSTICA">TURÍSTICA</option>
+            <option value="MISTA">MISTA</option>
+            <option value="OUTRA">OUTRA</option>
+        </select><br><br>
+
+        <label for="tendenciaDesenvUrbanistico">Tendência De Desenv. Urbanístico:</label>
+        <select id="tendenciaDesenvUrbanistico" name="tendenciaDesenvUrbanistico" required>
+            <option value="ZONA NOVA">ZONA NOVA</option>
+            <option value="EM EXPANSÃO">EM EXPANSÃO</option>
+            <option value="ESTABILIZADA">ESTABILIZADA</option>
+            <option value="EM RECUPERAÇÃO">EM RECUPERAÇÃO</option>
+            <option value="EM DEGRADAÇÃO">EM DEGRADAÇÃO</option>
+        </select><br><br>
+
+        <label for="facilidadeAcesso">Facilidade De Acesso:</label>
+        <select id="facilidadeAcesso" name="facilidadeAcesso" required>
+            <option value="MUITO BOA">MUITO BOA</option>
+            <option value="BOA">BOA</option>
+            <option value="RAZOÁVEL">RAZOÁVEL</option>
+            <option value="MEDIOCRE">MEDIOCRE</option>
+            <option value="MÁ">MÁ</option>
+        </select><br><br>
+
+        <label for="transportesPublicos">Transportes Públicos:</label>
+        <select id="transportesPublicos" name="transportesPublicos" required>
+            <option value="MUITO BOA">MUITO BOA</option>
+            <option value="BOA">BOA</option>
+            <option value="RAZOÁVEL">RAZOÁVEL</option>
+            <option value="MEDIOCRE">MEDIOCRE</option>
+            <option value="MÁ">MÁ</option>
+        </select><br><br>
+
+        <label for="valorComercialLocalizacao">Valor Comercial Da Localização:</label>
+        <select id="valorComercialLocalizacao" name="valorComercialLocalizacao" required>
+            <option value="MUITO BOM">MUITO BOM</option>
+            <option value="BOM">BOM</option>
+            <option value="REGULAR">REGULAR</option>
+            <option value="DEFICIENTE">DEFICIENTE</option>
+            <option value="MAU">MAU</option>
+        </select><br><br>
+
+        <label for="servicosProximidade">Serviços Na Proximidade:</label>
+        <select id="servicosProximidade" name="servicosProximidade" required>
+            <option value="MUITO BOA">MUITO BOA</option>
+            <option value="BOA">BOA</option>
+            <option value="RAZOÁVEL">RAZOÁVEL</option>
+            <option value="MEDIOCRE">MEDIOCRE</option>
+            <option value="MÁ">MÁ</option>
+        </select><br><br>
+
+        <label for="zonasVerdes">Zonas Verdes:</label>
+        <select id="zonasVerdes" name="zonasVerdes" required>
+            <option value="MUITO BOA">MUITO BOA</option>
+            <option value="BOA">BOA</option>
+            <option value="RAZOÁVEL">RAZOÁVEL</option>
+            <option value="MEDIOCRE">MEDIOCRE</option>
+            <option value="MÁ">MÁ</option>
+        </select><br><br>
+
+        <label for="enquadramentoPaisagistico">Enquadramento Paisagístico:</label>
+        <select id="enquadramentoPaisagistico" name="enquadramentoPaisagistico" required>
+            <option value="MUITO BOA">MUITO BOA</option>
+            <option value="BOA">BOA</option>
+            <option value="RAZOÁVEL">RAZOÁVEL</option>
+            <option value="MEDIOCRE">MEDIOCRE</option>
+            <option value="MÁ">MÁ</option>
+        </select><br><br>
+
+        <label for="facilComercializacao">Facil. Comercialização:</label>
+        <select id="facilComercializacao" name="facilComercializacao" required>
+            <option value="IMEDIATA (até 6 meses)">IMEDIATA (até 6 meses)</option>
+            <option value="NORMAL (7 a 18 meses)">NORMAL (7 a 18 meses)</option>
+            <option value="DIFÍCIL (19 a 36 meses)">DIFÍCIL (19 a 36 meses)</option>
+            <option value="MTO DIFÍCIL (mais de 36 meses)">MTO DIFÍCIL (mais de 36 meses)</option>
+        </select><br><br>
+
         <!-- Observations Textbox -->
         <label for="observations">Observações:</label>
         <textarea id="observations" name="observations" rows="4" placeholder="Mais algo relevante e que seja comparável com outros imóveis no mercado?"></textarea><br><br>
-
 
         <!-- Submit Button -->
         <input type="submit" value="Submeter">
