@@ -148,8 +148,8 @@ document.getElementById('realEstateForm').addEventListener('submit', function(ev
 
     formData['Observações'] = document.getElementById('observations').value;
 
-    const csvContent = "\uFEFF" + Object.keys(formData).map(key => `${key},"${formData[key]}"`).join("\n");
-
+    const csvContent = "\uFEFF" + Object.keys(formData).map(key => `"${key}","${formData[key]}"`).join("\n");
+    
     const blob = new Blob([csvContent], { type: 'text/csv;charset=utf-8;' });
     const link = document.createElement("a");
     const url = URL.createObjectURL(blob);
@@ -158,4 +158,5 @@ document.getElementById('realEstateForm').addEventListener('submit', function(ev
     document.body.appendChild(link);
     link.click();
     document.body.removeChild(link);
+
 });
