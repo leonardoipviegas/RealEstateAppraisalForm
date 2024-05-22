@@ -148,7 +148,7 @@ document.getElementById('realEstateForm').addEventListener('submit', function(ev
 
     formData['Observações'] = document.getElementById('observations').value;
 
-    const csvContent = "data:text/csv;charset=utf-8," + Object.keys(formData).map(key => `${key},"${formData[key]}"`).join("\n");
+    const csvContent = "data:text/csv;charset=utf-8,\uFEFF" + Object.keys(formData).map(key => `${key},"${formData[key]}"`).join("\n");
 
     const encodedUri = encodeURI(csvContent);
     const link = document.createElement("a");
