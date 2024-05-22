@@ -148,13 +148,14 @@ document.getElementById('realEstateForm').addEventListener('submit', function(ev
 
     formData['Observações'] = document.getElementById('observations').value;
 
-    const csvContent = "data:text/csv;charset=utf-8,\uFEFF" + Object.keys(formData).map(key => `${key},"${formData[key]}"`).join("\n");
+    const csvContent = "\uFEFF" + Object.keys(formData).map(key => `${key},"${formData[key]}"`).join("\n");
 
-    const encodedUri = encodeURI(csvContent);
+    const blob = new Blob([csvContent], { type: 'text/csv;charset=utf-8;' });
     const link = document.createElement("a");
-    link.setAttribute("href", encodedUri);
+    const url = URL.createObjectURL(blob);
+    link.setAttribute("href", url);
     link.setAttribute("download", "real_estate_appraisal.csv");
     document.body.appendChild(link);
-
     link.click();
+    document.body.removeChild(link);
 });
