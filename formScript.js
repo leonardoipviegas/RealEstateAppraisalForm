@@ -68,27 +68,12 @@ function createFeatureInput(featureId, number) {
 document.getElementById('realEstateForm').addEventListener('submit', function(event) {
     event.preventDefault();
 
-    const { jsPDF } = window.jspdf;
-    const doc = new jsPDF();
-
-    function addListItem(text, yPos, indentLevel = 0, bold = false) {
-        const indentSize = 5;
-        const xPosition = 10 + (indentLevel * indentSize);
-        doc.setFont("helvetica", bold ? "bold" : "normal");
-        doc.text(text, xPosition, yPos);
-        return yPos + 7;
-    }
-
-    let yPos = 10;
-    const sectionSpacing = 10;
-
-    yPos = addListItem('Endereço da Casa: ' + document.getElementById('address').value, yPos, 0, true);
-    yPos = addListItem('Data da Visita: ' + document.getElementById('visitDate').value, yPos);
-    yPos += sectionSpacing;
-    
-    yPos = addListItem('Qualidade das Vistas: ' + document.getElementById('viewQuality').value, yPos, 0, true);
-    yPos = addListItem('Qualidade dos Acabamentos/Equipamentos: ' + document.getElementById('furQuality').value, yPos);
-    yPos += sectionSpacing;
+    let formData = {
+        'Endereço da Casa': document.getElementById('address').value,
+        'Data da Visita': document.getElementById('visitDate').value,
+        'Qualidade das Vistas': document.getElementById('viewQuality').value,
+        'Qualidade dos Acabamentos/Equipamentos': document.getElementById('furQuality').value
+    };
 
     const features = [
         { id: 'varandas', question: 'Existem varandas?' },
@@ -98,29 +83,28 @@ document.getElementById('realEstateForm').addEventListener('submit', function(ev
         { id: 'garagemDupla', question: 'Existe garagem dupla?' },
         { id: 'parqueamentoSimples', question: 'Existe parqueamento simples?' },
         { id: 'parqueamentoDuplo', question: 'Existe parqueamento duplo?' },
-        { id: 'quintal', question: 'Existe quintal/logradouro?' },
+        { id: 'quintal', question: 'Existe quintal/logradouro?' }
     ];
 
     features.forEach(({ id, question }) => {
         let featureValue = document.getElementById(id).value === 'Yes' ? 'Sim' : 'Não';
-        yPos = addListItem(question + ' ' + featureValue, yPos, 0, true);
+        formData[question] = featureValue;
 
         if (featureValue === 'Sim') {
             let countElement = document.getElementById(id + 'Count');
             if (countElement) {
                 let count = countElement.value;
-                yPos = addListItem(`Quantidade: ` + count, yPos, 1);
+                formData[`Quantidade de ${id}`] = count;
 
                 for (let i = 1; i <= count; i++) {
                     let sizeElement = document.getElementById(id + 'Size' + i);
                     if (sizeElement) {
                         let size = sizeElement.value;
-                        yPos = addListItem(`Tamanho ${i} (m2): ` + size, yPos, 2);
+                        formData[`Tamanho do(a) ${id} ${i} (m2)`] = size;
                     }
                 }
             }
         }
-        yPos += sectionSpacing;
     });
 
     let additionalFields = [
@@ -159,23 +143,18 @@ document.getElementById('realEstateForm').addEventListener('submit', function(ev
     ];
 
     additionalFields.forEach(({ id, label }) => {
-        let elementValue = document.getElementById(id).value;
-        yPos = addListItem(label + ': ' + elementValue, yPos, 0, true);
-        yPos += 3;
+        formData[label] = document.getElementById(id).value;
     });
 
-    let observations = document.getElementById('observations').value;
-    if (observations) {
-        yPos = addListItem('Observações:', yPos, 0, true);
-        yPos = addListItem(observations, yPos, 1);
-    }
+    formData['Observações'] = document.getElementById('observations').value;
 
-    const addressInput = document.getElementById('address').value;
-    const visitDateInput = document.getElementById('visitDate').value;
-    const dateObj = new Date(visitDateInput);
-    const formattedDate = dateObj.toISOString().split('T')[0].slice(2);
-    const sanitizedAddress = addressInput.replace(/[^\w\s]/gi, '_');
-    const filename = `${formattedDate} ${sanitizedAddress}.pdf`;
+    const csvContent = "data:text/csv;charset=utf-8," + Object.keys(formData).map(key => `${key},"${formData[key]}"`).join("\n");
 
-    doc.save(filename);
+    const encodedUri = encodeURI(csvContent);
+    const link = document.createElement("a");
+    link.setAttribute("href", encodedUri);
+    link.setAttribute("download", "real_estate_appraisal.csv");
+    document.body.appendChild(link);
+
+    link.click();
 });
