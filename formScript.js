@@ -1,12 +1,12 @@
 document.addEventListener('DOMContentLoaded', function() {
-    setupDynamicField('varandas', 'Quantas varandas existem?');
-    setupDynamicField('arrecadacoes', 'Quantas arrecadações existem?');
-    setupDynamicField('marquises', 'Quantas marquises existem?');
-    setupDynamicField('garagemSimples', 'Quantas garagens simples existem?');
-    setupDynamicField('garagemDupla', 'Quantas garagens duplas existem?');
-    setupDynamicField('parqueamentoSimples', 'Quantos parqueamentos simples existem?');
-    setupDynamicField('parqueamentoDuplo', 'Quantos parqueamentos duplos existem?');
-    setupDynamicField('quintal', 'Quantos quintais/logradouros existem?');
+    setupDynamicField('varandas', 'Qtd de varandas:');
+    setupDynamicField('arrecadacoes', 'Qtd de arrecadações:');
+    setupDynamicField('marquises', 'Qtd de marquises:');
+    setupDynamicField('garagemSimples', 'Qtd de garagens simples:');
+    setupDynamicField('garagemDupla', 'Qtd de garagens duplas:');
+    setupDynamicField('parqueamentoSimples', 'Qtd de parq. simples:');
+    setupDynamicField('parqueamentoDuplo', 'Qtd de parq. duplos:');
+    setupDynamicField('quintal', 'Qtd de quintais:');
 });
 
 function setupDynamicField(featureId, questionText) {
@@ -15,9 +15,13 @@ function setupDynamicField(featureId, questionText) {
         featureSelect.addEventListener('change', function() {
             var detailsDiv = document.getElementById(featureId + 'Details');
             if (this.value === 'Yes') {
-                detailsDiv.innerHTML = '<label for="' + featureId + 'Count">' + questionText + '</label>' +
-                                        '<input type="number" id="' + featureId + 'Count" name="' + featureId + 'Count" min="1">' +
-                                        '<button type="button" onclick="addFeatureDetails(\'' + featureId + '\')">Confirmar</button><br><br>';
+                detailsDiv.innerHTML = '<div class="form-group">' +
+                                       '<label for="' + featureId + 'Count">' + questionText + '</label>' +
+                                       '<input type="number" id="' + featureId + 'Count" name="' + featureId + 'Count" min="1" value="1">' +
+                                       '<button type="button" onclick="addFeatureDetails(\'' + featureId + '\')">Gerar Campos de Área (m2)</button>' +
+                                       '</div>';
+                // Auto-trigger just in case they just want 1
+                addFeatureDetails(featureId);
             } else {
                 detailsDiv.innerHTML = '';
             }
@@ -33,19 +37,20 @@ function addFeatureDetails(featureId) {
 
         var sizesContainerId = featureId + 'SizesContainer';
         var sizesContainer = document.getElementById(sizesContainerId);
-        if (!sizesContainer) {
-            sizesContainer = document.createElement('div');
-            sizesContainer.id = sizesContainerId;
-            detailsDiv.appendChild(sizesContainer);
+        
+        // Remove existing container if recalculating
+        if (sizesContainer) {
+            sizesContainer.remove();
         }
-
-        sizesContainer.innerHTML = '';
+        
+        sizesContainer = document.createElement('div');
+        sizesContainer.id = sizesContainerId;
+        sizesContainer.style.marginTop = "15px";
+        detailsDiv.appendChild(sizesContainer);
 
         for (let i = 1; i <= count; i++) {
             sizesContainer.innerHTML += createFeatureInput(featureId, i);
         }
-    } else {
-        console.error('Count element not found for feature:', featureId);
     }
 }
 
@@ -58,11 +63,13 @@ function createFeatureInput(featureId, number) {
         'garagemDupla': 'Garagem Dupla',
         'parqueamentoSimples': 'Parqueamento Simples',
         'parqueamentoDuplo': 'Parqueamento Duplo',
-        'quintal': 'Quintal/Logradouro'
+        'quintal': 'Quintal'
     };
 
-    return '<label for="' + featureId + 'Size' + number + '">Tamanho do(a) ' + featureNamePortuguese[featureId] + ' ' + number + ' (m2):</label>' +
-    '<input type="number" id="' + featureId + 'Size' + number + '" name="' + featureId + 'Size' + number + '" required><br><br>';
+    return '<div class="form-group" style="margin-top: 10px;">' +
+           '<label for="' + featureId + 'Size' + number + '">Área ' + featureNamePortuguese[featureId] + ' ' + number + ' (m2):</label>' +
+           '<input type="number" step="0.01" id="' + featureId + 'Size' + number + '" name="' + featureId + 'Size' + number + '" required>' +
+           '</div>';
 }
 
 document.getElementById('realEstateForm').addEventListener('submit', function(event) {
@@ -143,7 +150,8 @@ document.getElementById('realEstateForm').addEventListener('submit', function(ev
     ];
 
     additionalFields.forEach(({ id, label }) => {
-        formData[label] = document.getElementById(id).value;
+        let element = document.getElementById(id);
+        if(element) formData[label] = element.value;
     });
 
     formData['Observações'] = document.getElementById('observations').value;
@@ -153,10 +161,13 @@ document.getElementById('realEstateForm').addEventListener('submit', function(ev
     const blob = new Blob([csvContent], { type: 'text/csv;charset=utf-8;' });
     const link = document.createElement("a");
     const url = URL.createObjectURL(blob);
+    
+    // Naming logic based on address
+    const safeAddress = formData['Endereço da Casa'].replace(/[^a-z0-9]/gi, '_').toLowerCase();
     link.setAttribute("href", url);
-    link.setAttribute("download", "real_estate_appraisal.csv");
+    link.setAttribute("download", `avaliacao_${safeAddress || 'imovel'}.csv`);
+    
     document.body.appendChild(link);
     link.click();
     document.body.removeChild(link);
-
 });
